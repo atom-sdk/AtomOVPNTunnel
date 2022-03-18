@@ -68,8 +68,14 @@ Pod::Spec.new do |s|
   s.subspec "AtomOVPNTunnel" do |adapter|
     adapter.source_files  = "#{adapter_path}/library/*.{h,m,mm}", "#{adapter_path}/include/*.h"
     adapter.public_header_files = "#{adapter_path}/include/*.h"
-
+    adapter.dependency "AtomOVPNTunnel/ASIO"
+    
     adapter.compiler_flags = "-DUSE_ASIO"
+
+    adapter.dependency "AtomOVPNTunnel/LZ4"
+    adapter.dependency "AtomOVPNTunnel/mbedTLS"
+    adapter.dependency "AtomOVPNTunnel/OpenVPN3"
+    adapter.dependency "AtomOVPNTunnel/OpenVPNClient"
   end
 
   s.subspec "ASIO" do |asio|
@@ -78,7 +84,7 @@ Pod::Spec.new do |s|
 
   s.subspec "LZ4" do |lz4|
     lz4.source_files  = "#{lz4_path}/lib/*.{h,c}",
-    lz4.private_header_files = "#{lz4_path}/lib/*.{h,c}"
+    lz4.private_header_files = "#{lz4_path}/lib/*.{h}"
 
     lz4.compiler_flags = "-DXXH_NAMESPACE=LZ4_"
   end
@@ -99,6 +105,8 @@ Pod::Spec.new do |s|
     client.private_header_files = "#{client_path}/include/*.{hpp}"
 
     client.compiler_flags = "-x objective-c++", "-DUSE_ASIO", "-DUSE_ASIO_THREADLOCAL", "-DASIO_STANDALONE", "-DASIO_NO_DEPRECATED", "-DASIO_HAS_STD_STRING_VIEW", "-DHAVE_LZ4", "-DUSE_MBEDTLS", "-DOPENVPN_FORCE_TUN_NULL", "-DUSE_TUN_BUILDER"
-  end
+    client.dependency "AtomOVPNTunnel/LZ4"
+    client.dependency "AtomOVPNTunnel/mbedTLS"
+ end
 
 end
