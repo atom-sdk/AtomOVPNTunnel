@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name = "AtomOVPNTunnel"
-  s.version = "0.0.6"
+  s.version = "0.0.7"
   s.summary   = "Objective-C wrapper for OpenVPN library. Compatible with iOS and macOS."
   s.description = <<-DESC
     OpenVPNAdapter is an Objective-C framework that allows to easily configure and establish VPN connection using OpenVPN protocol.
@@ -65,19 +65,6 @@ Pod::Spec.new do |s|
 
   # ――― Subspecs ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.subspec "AtomOVPNTunnel" do |adapter|
-    adapter.source_files  = "#{adapter_path}/library/*.{h,m,mm}", "#{adapter_path}/include/*.h"
-    adapter.public_header_files = "#{adapter_path}/include/*.h"
-    adapter.dependency "AtomOVPNTunnel/ASIO"
-    
-    adapter.compiler_flags = "-DUSE_ASIO"
-
-    adapter.dependency "AtomOVPNTunnel/LZ4"
-    adapter.dependency "AtomOVPNTunnel/mbedTLS"
-    adapter.dependency "AtomOVPNTunnel/OpenVPN3"
-    # adapter.dependency "AtomOVPNTunnel/OpenVPNClient"
-  end
-
   s.subspec "ASIO" do |asio|
     asio.preserve_paths = "#{asio_path}/asio/include/**/*.{hpp,ipp}"
   end
@@ -108,5 +95,17 @@ Pod::Spec.new do |s|
     client.dependency "AtomOVPNTunnel/LZ4"
     client.dependency "AtomOVPNTunnel/mbedTLS"
  end
+
+ s.subspec "AtomOVPNTunnel" do |adapter|
+  adapter.source_files  = "#{adapter_path}/library/*.{h,m,mm}", "#{adapter_path}/include/*.h"
+  adapter.public_header_files = "#{adapter_path}/include/*.h"
+  adapter.dependency "AtomOVPNTunnel/ASIO"
+  
+  adapter.compiler_flags = "-DUSE_ASIO"
+
+  adapter.dependency "AtomOVPNTunnel/LZ4"
+  adapter.dependency "AtomOVPNTunnel/mbedTLS"
+  adapter.dependency "AtomOVPNTunnel/OpenVPNClient"
+end
 
 end
