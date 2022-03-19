@@ -97,8 +97,8 @@ Pod::Spec.new do |s|
  end
 
  s.subspec "AtomOVPNTunnel1" do |adapter|
-  adapter.source_files  = "#{adapter_path}/library/*.{h,m,mm}", "#{adapter_path}/include/*.h"
-  adapter.public_header_files = "#{adapter_path}/include/*.h"
+  adapter.source_files  = "#{adapter_path}/library/*.{h,m,mm}", "#{adapter_path}/include/*.h",  "#{client_path}/library/*.{mm}", "#{client_path}/include/*.{hpp}"
+  adapter.public_header_files = "#{adapter_path}/include/*.h",  "#{client_path}/include/*.{hpp}"
   adapter.dependency "AtomOVPNTunnel/ASIO"
   
   adapter.compiler_flags = "-DUSE_ASIO"
