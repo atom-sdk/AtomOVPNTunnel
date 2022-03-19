@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name = "AtomOVPNTunnel"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
   s.summary   = "Objective-C wrapper for OpenVPN library. Compatible with iOS and macOS."
   s.description = <<-DESC
     OpenVPNAdapter is an Objective-C framework that allows to easily configure and establish VPN connection using OpenVPN protocol.
@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
     adapter.dependency "AtomOVPNTunnel/LZ4"
     adapter.dependency "AtomOVPNTunnel/mbedTLS"
     adapter.dependency "AtomOVPNTunnel/OpenVPN3"
-    adapter.dependency "AtomOVPNTunnel/OpenVPNClient"
+    # adapter.dependency "AtomOVPNTunnel/OpenVPNClient"
   end
 
   s.subspec "ASIO" do |asio|
